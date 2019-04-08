@@ -20,6 +20,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Slide from '@material-ui/core/Slide';
 import Toolbar from '@material-ui/core/Toolbar';
 
+import fileListCreate from './fileListHelper';
+
 import './DwvComponent.css';
 import dwv from 'dwv';
 import TagsTable from './TagsTable';
@@ -87,6 +89,8 @@ class filesender extends Component {
 
     }
     componentWillMount() {
+
+
         var app = new dwv.App();
         // initialise app
         app.init({
@@ -95,6 +99,8 @@ class filesender extends Component {
             "shapes": ["Ruler"],
             "isMobile": true
         });
+
+        
         // progress
         var self = this;
         app.addEventListener("load-progress", function (event) {
@@ -231,11 +237,15 @@ class filesender extends Component {
         });
     }
     viewDicom(event, fileUrl,name) {
+        const input = document.querySelector('input[type=file]');
         var self = this;
         console.log(fileUrl);
-        fetch('fileUrl')
-        .then(dat=>dat.blob)
+        fetch(fileUrl)
         .then(dat=>{
+            return dat.blob()
+        })
+        .then(dat=>{
+            console.log(dat);
             var file = new File([dat], name,{type: "Application/dicom"});
             self.state.dwvApp.loadFiles([file]);
         })
