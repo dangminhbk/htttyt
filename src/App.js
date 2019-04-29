@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Filesharer from './filesender.js';
-import Dwv from './DwvComponent';
+import Filesharer from './Component/filesender/filesender.js';
+import Dwv from './Component/dwv/DwvComponent';
 import {Provider} from 'react-redux';
-import Redux from 'redux';
+import {createStore} from 'redux';
+import Reducer from './Redux/Reducer';
 
-const reducer;
-const store = Redux.createStore();
+const store = createStore(Reducer);
 var options = {
   peerjs_key: 'your peerjs key'
 }
 class App extends Component {
   render() {
     return (
-      <div>
+      <Provider store = {store}>
           <Filesharer></Filesharer>
           <Dwv></Dwv>
-      </div>
+      </Provider>       
     );
   }
 }
