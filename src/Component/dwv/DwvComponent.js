@@ -18,6 +18,7 @@ import Slide from '@material-ui/core/Slide';
 import Toolbar from '@material-ui/core/Toolbar';
 
 import TagsTable from './TagsTable';
+import {connect} from 'react-redux';
 
 import './DwvComponent.css';
 import dwv from 'dwv';
@@ -223,9 +224,8 @@ class DwvComponent extends React.Component {
   };
 
 }
-
 DwvComponent.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(DwvComponent);
+export default connect()(withStyles(styles)(DwvComponent));
