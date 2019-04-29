@@ -228,4 +228,4 @@ DwvComponent.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles,DwvComponent);
+export default connect()(withStyles(styles)(DwvComponent));

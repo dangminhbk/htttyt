@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import peerjs from 'peerjs';
 import randomstring from 'randomstring';
+import {connect} from 'react-redux';
+
 class filesender extends Component {
     constructor(prop) {
         super(prop);
@@ -200,4 +202,4 @@ class filesender extends Component {
     }
 }
 
-export default filesender;
+export default connect()(filesender);
