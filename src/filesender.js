@@ -132,8 +132,10 @@ class filesender extends Component {
             this.setState({
                 conn: connection
             }, () => {
-
+                console.log(1);
                 this.state.conn.on('open', () => {
+                    console.log(2);
+                    console.log(this);
                     this.setState({
                         connected: true
                     });
