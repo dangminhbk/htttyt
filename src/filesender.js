@@ -194,7 +194,7 @@ class filesender extends Component {
                 });
             });
 
-            this.state.conn.on('data', this.onReceiveData);
+            this.state.conn.on('data', this.onReceiveData.bind(this));
         });
     }
     sendfile(event) {
